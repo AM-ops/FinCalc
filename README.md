@@ -1,7 +1,7 @@
-# FinCalc\
+# FinCalc
 
-## A personal financial calculator made for BWIA121 - Introduction to Acturial Sciences module\
+## A personal financial calculator made for BWIA121 - Introduction to Acturial Sciences module
 
-Hosted at: https://fincalc.pythonanywhere.com/ \
+Hosted at: https://fincalc.pythonanywhere.com/ 
 
-Framework used: Django\
+Framework used: Django
