@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% block titleblock%}TVM - Calculate{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+
+{% block bodyblock %}
+<div class="jumbotron">
+  <h1>Welcome to the Loan/Withdrawals Calculation Page!</h1>
+  <h2>Select a calculation below to begin</h2>
+</div>
+
+<div class="container text-center" style="margin-top: 20px;margin-bottom: 20px;">
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+  <div class="col-sm d-flex justify-content-center">
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Constant Withdrawal Amount</h5>
+      <div class="card" style="width: 25rem;">
+        <ul class="list-group list-group-flush">
+          <a href="{% url 'loan_app:create_ConsLoanArrAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Arrears</li></a>
+          <a href="{% url 'loan_app:create_ConsLoanAdvAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Advance</li></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+  <div class="col-sm d-flex justify-content-center">
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Increasing Withdrawal Amount</h5>
+      <div class="card" style="width: 25rem;">
+        <ul class="list-group list-group-flush">
+          <a href="{% url 'loan_app:create_IncLoanArrAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Arrears</li></a>
+          <a href="{% url 'loan_app:create_IncLoanAdvAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Advance</li></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

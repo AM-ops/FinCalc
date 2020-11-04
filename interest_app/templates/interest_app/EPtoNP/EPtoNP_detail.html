@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block titleblock%}Answer{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Answer for {{detail.type}}</h3>
+    <p>Known Effective Per Period Interest Rate : {{ detail.ip }} (%)</p>
+    <p>Known Compounding Period: {{ detail.pone }}</p>
+    <p>Unknown Compounding Period: {{ detail.ptwo }}</p>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center">
+      <h4>\( i^{(p_2)} = p_2 [ (1 + \frac{i^{(p_1)}}{p_1})^{\frac{p_1}{p_2}} - 1 ] \)</h4>
+    </div>
+    <div class="maths text-center m-3">
+      <h4>\( i^{({{detail.ptwo}})} = {{detail.ptwo}} [ (1 + {{detail.idiv}} )^{({{detail.pone}})/({{detail.ptwo}})} - 1 ] \)</h4>
+    </div>
+    <h5 style="color:green;font-weight:bold;">Answer is: {{ detail.answer }} %</h5>
+    <div class="container text-center" style='margin-top:10px;'>
+      <a class="btn btn-outline-success" href="{% url 'interest_app:calc_interest' %}">Go Back</a>
+      <a class="btn btn-outline-success" href="{% url 'interest_app:interest_list' %}">To Portfolio</a>
+    </div>
+</div>
+{% endblock%}

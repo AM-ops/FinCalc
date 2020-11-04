@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% block titleblock%}TVM Portfolio{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Welcome to your Loan/Withdrawal Portfolio!</h3>
+    <div class="container m-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Type of Calculation</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'loan_app:ConsLoanArrAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'loan_app:ConsLoanArrAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsLoanAdvAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'loan_app:ConsLoanAdvAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'loan_app:ConsLoanAdvAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in IncLoanArrAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'loan_app:IncLoanArrAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'loan_app:IncLoanArrAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in IncLoanAdvAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'loan_app:IncLoanAdvAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'loan_app:IncLoanAdvAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock%}

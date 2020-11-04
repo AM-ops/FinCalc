@@ -1,0 +1,210 @@
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>{% block titleblock%}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/master.css' %}">
+        <style>
+        .container:not(.maths) {
+          font-family: "Computer Modern Sans", sans-serif  !important;
+        }
+        </style>
+        {% block headblock%}{% endblock %}
+    </head>
+      </head>
+      <body>
+        <nav class="navbar navbar-expand-lg bg-light" role="navigation" id="navbar">
+          <div class="container">
+            <div class="navbar-nav align-items-center">
+            <a class="navbar-brand mynav" href="{% url 'home' %}">FIN<span><strong>CALC</strong></span></a>
+          </div>
+            <ul class="nav navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Interest</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'interest_app:interest_index' %}">Overview</a>
+                  <a class="dropdown-item" href="{% url 'interest_app:calc_interest' %}">Interest Conversion</a>
+                  <a class="dropdown-item" href="{% url 'interest_app:interest_list' %}">My Portfolio</a>
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Time Value of Money</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'tvm_app:tvm_index' %}">Overview</a>
+                  <a class="dropdown-item" href="{% url 'tvm_app:calc_tvm' %}">Calculate</a>
+                  <a class="dropdown-item" href="{% url 'tvm_app:tvm_list' %}">My Portfolio</a>
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loans</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'loan_app:loan_index' %}">Overview</a>
+                  <a class="dropdown-item" href="{% url 'loan_app:calc_loan' %}">Calculate</a>
+                  <a class="dropdown-item" href="{% url 'loan_app:loan_list' %}">My Portfolio</a>
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                </div>
+              </li>
+                <li><a class="nav-item nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a class="nav-item nav-link disabled">Welcome,  {{user.username}}</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+              {% else %}
+                <li><a class="nav-item nav-link" href="{% url 'interest_app:interest_index' %}">Interest</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'tvm_app:tvm_index' %}">Time Value of Money</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'loan_app:loan_index' %}">Loans</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+
+        {% if user.is_authenticated %}
+        <div class="container ">
+          <div class="d-flex flex-row-reverse">
+            <div class="m-2 p-2 justify-content-center" style="width:15%;"><button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#notepadModal">Scratchpad</button></div>
+            <div class="m-2 p-2 justify-content-center" style="width:15%;"><button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#calcModal">Popup Calculator</button></div>
+          </div>
+        </div>
+        {% endif %}
+
+    <div class="container">
+      {% block bodyblock %}{% endblock %}
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="calcModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Simple Calculator</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+        <FORM NAME="Calc">
+          <TABLE BORDER=4>
+            <TR>
+              <TD>
+                <INPUT TYPE="text"   NAME="Input" Size="16">
+                  <br>
+                </TD>
+              </TR>
+              <TR>
+                <TD>
+                  <INPUT TYPE="button" NAME="one"   VALUE="  1  " OnClick="Calc.Input.value += '1'">
+                  <INPUT TYPE="button" NAME="two"   VALUE="  2  " OnCLick="Calc.Input.value += '2'">
+                  <INPUT TYPE="button" NAME="three" VALUE="  3  " OnClick="Calc.Input.value += '3'">
+                  <INPUT TYPE="button" NAME="plus"  VALUE="  +  " OnClick="Calc.Input.value += ' + '">
+                  <br>
+                  <INPUT TYPE="button" NAME="four"  VALUE="  4  " OnClick="Calc.Input.value += '4'">
+                  <INPUT TYPE="button" NAME="five"  VALUE="  5  " OnCLick="Calc.Input.value += '5'">
+                  <INPUT TYPE="button" NAME="six"   VALUE="  6  " OnClick="Calc.Input.value += '6'">
+                  <INPUT TYPE="button" NAME="minus" VALUE="  -  " OnClick="Calc.Input.value += ' - '">
+                  <br>
+                  <INPUT TYPE="button" NAME="seven" VALUE="  7  " OnClick="Calc.Input.value += '7'">
+                  <INPUT TYPE="button" NAME="eight" VALUE="  8  " OnCLick="Calc.Input.value += '8'">
+                  <INPUT TYPE="button" NAME="nine"  VALUE="  9  " OnClick="Calc.Input.value += '9'">
+                  <INPUT TYPE="button" NAME="times" VALUE="  x  " OnClick="Calc.Input.value += ' * '">
+                  <br>
+                  <INPUT TYPE="button" NAME="clear" VALUE="  c  " OnClick="Calc.Input.value = ''">
+                  <INPUT TYPE="button" NAME="zero"  VALUE="  0  " OnClick="Calc.Input.value += '0'">
+                  <INPUT TYPE="button" NAME="DoIt"  VALUE="  =  " OnClick="Calc.Input.value = eval(Calc.Input.value)">
+                  <INPUT TYPE="button" NAME="div"   VALUE="  /  " OnClick="Calc.Input.value += ' / '">
+                  <br>
+                </TD>
+              </TR>
+            </TABLE>
+        </FORM>
+        </div>
+        <p align="center"><font face="arial" size="-2">This free script provided by</font><br><font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScriptKit</a></font></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="notepadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Scratchpad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea id="TypeHere" class="form-control"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$('#calcModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+</script>
+<script type="text/javascript">
+$('#notepadModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+</script>
+<script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script type="application/x-javascript">tinymce.init({selector:'#TypeHere'});</script>
+<script src="{% static 'js/calculate.js' %}"></script>
+  </body>
+
+    <footer class="pt-2 my-md-2 pt-md-2 border-top">
+      <div class="h4 row p-2 m-2 d-flex justify-content-center">
+        Useful Resources
+      </div>
+    <div class="row">
+      <div class="col-6 col-md d-flex justify-content-center">
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://www.xe.com/currencyconverter/">Currency Converter</a></li>
+          <li><a class="text-muted" href="https://www.investopedia.com/">Investopedia</a></li>
+          <li><a class="text-muted" href="https://www.moneyweb.co.za/">Moneyweb</a></li>
+          <li><a class="text-muted" href="https://finance.yahoo.com/">Yahoo! Finance</a></li>
+          <li><a class="text-muted" href="http://www.statssa.gov.za/">Statistics South Africa</a></li>
+          <li><a class="text-muted" href="http://www.treasury.gov.za/">National Treasury</a></li>
+          <li><a class="text-muted" href="https://www.sars.gov.za/Pages/default.aspx">South African Revenue Service</a></li>
+          <li><a class="text-muted" href="https://web.jse.co.za/">Johannesburg Stock Exchange</a></li>
+          <li><a class="text-muted" href="https://www.businesslive.co.za/">BusinessLIVE</a></li>
+          <li><a class="text-muted" href="https://www.businessinsider.com/">Business Insider</a></li>
+        </ul>
+      </div>
+    </div><div class="row">
+      <div class="col-6 col-md d-flex justify-content-center">
+        <h5 class="footer-copyright"><a href="http://www.nwu.ac.za">&copy; North-West University BWIA121 - Intro to Actuarial Sciences</a></h5>
+      </div>
+    </div>
+  </div><div class="row">
+    <div class="col-6 col-md d-flex justify-content-center">
+      <h6>Affaan Muhammad</h6>
+    </div>
+  </div>
+  </footer>
+
+    </html>

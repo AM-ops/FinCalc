@@ -1,0 +1,118 @@
+{% extends 'base.html'%}
+{% block titleblock%}Interest Portfolio{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Welcome to your Interest Portfolio!</h3>
+    <div class="container m-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:AEtoNP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:AEtoNP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in AEtoEP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:AEtoEP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:AEtoEP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in AEtoC_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:AEtoC_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:AEtoC_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in EPtoAE_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:EPtoAE_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:EPtoAE_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in EPtoEP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:EPtoEP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:EPtoEP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in EPtoNP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:EPtoNP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:EPtoNP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in EPtoC_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:EPtoC_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:EPtoC_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in NPtoAE_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:NPtoAE_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:NPtoAE_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in NPtoNP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:NPtoNP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:NPtoNP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in NPtoEP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:NPtoEP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:NPtoEP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in NPtoC_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:NPtoC_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:NPtoC_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in CtoAE_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:CtoAE_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:CtoAE_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in CtoEP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:CtoEP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:CtoEP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in CtoNP_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'interest_app:CtoNP_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'interest_app:CtoNP_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock%}

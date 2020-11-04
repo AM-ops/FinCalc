@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block titleblock%}Fill in{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Calculate the Accumulated Value of a Increasing Loan/Withdrawal with Interest Paid in Advance</h3>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center m-5">
+      <h5>\( AV = C(1 + i)^n  - X(1 + i)[\frac{(1 + i)^{n} - (1 + j)^{n}}{i - j}] \)</h5>
+    </div>
+    <p>Where:</p>
+    <ul>
+      <li class="list-unstyled m-2"><span class="maths h5">\( AV \)</span> is the Accumulated Value,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( C \)</span> is the Initial Amount,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( X \)</span> is the Payment/Withdrawal made every year,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( i \)</span> is the Annual Effective Interest Rate,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( j \)</span> is the Annual Increase in Installment and</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( n \)</span> is the total number of years</li>
+    </ul>
+</div>
+<div class="container">
+<form method="post" class="form m-5">
+  {% csrf_token %}
+    {{ form | crispy}}
+    <input type="submit" value="Calculate" class="btn btn-success">
+    <a class="btn btn-outline-success" href="{% url 'loan_app:calc_loan' %}">Go Back</a>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+  Home
+{% endblock %}
+
+{% block bodyblock %}
+  <div class="jumbotron">
+    <h1>Welcome to FinCalc!</h1>
+    <h2>Your own personal financial calculator</h2>
+  </div>
+  <div class="container">
+    <h4>This website is for education purposes and was made for the BWIA121 - Introduction to Acturial Sciences module</h4>
+  </div>
+
+  <div class="container">
+    <h5>Please Login <a href="{% url 'accounts:login' %}">here</a> to perform Calculations or alternatively Register <a href="{% url 'accounts:signup' %}">here</a></h5>
+  </div>
+
+  <div class="container">
+    <h3>Calculations Supported</h3>
+    <ul>
+      <li>Interest Conversion</li>
+      <li>Single Investments with Simple Interest</li>
+      <li>Single Investments with Compound Interest</li>
+      <li>Constant Annuities with Interest Paid in Arrears</li>
+      <li>Constant Annuities with Interest Paid in Advance</li>
+      <li>Increasing Annuities with Interest Paid in Arrears</li>
+      <li>Increasing Annuities with Interest Paid in Advance</li>
+      <li>Loans/Withdrawls</li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h3>Extra features</h3>
+    <ul>
+      <li>Theoretical explanations for Concepts</li>
+      <li>Calculations with Working-out</li>
+      <li>Calculations are saved to Portfolio</li>
+      <li>Popup Simple Calculator</li>
+      <li>Popup Notepad/Scratchpad</li>
+      <li>Links to Useful Resources</li>
+      <li>Graphs</li>
+      <li>Amortization Tables</li>
+    </ul>
+  </div>
+{% endblock %}

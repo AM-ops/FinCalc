@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titleblock %}Loans - Overview{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+  <h1>Loans/Withdrawals - Overview</h1>
+  <div class="container border m-2 p-2">
+    <div class="container m-2 p-2">
+      <h2>Key Concepts</h2>
+      <p>When Loans are discussed it is also important to discuss Withdrawals that can be made with Annuities and other Investments. This is due to the fact that the Formulae are identical except
+      for the small difference of a (<span class="maths">\( +/- \)</span>). Below are listed the Formulae</p>
+
+      <p>Constant Withdrawal : Interest Paid in Arrears</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n  - X[\frac{(1 + i)^{n} -1 }{i}] \)</h5>
+      </div>
+
+      <p>Constant Withdrawal : Interest Paid in Advance</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n  - X(1 + i)[\frac{(1 + i)^{n} -1 }{i}] \)</h5>
+      </div>
+
+      <p>Increasing Withdrawal : Interest Paid in Arrears</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n  - X[\frac{(1 + i)^{n} - (1 + j)^{n}}{i - j}] \)</h5>
+      </div>
+
+      <p>Increasing Withdrawal : Interest Paid in Advance</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n  + X(1 + i)[\frac{(1 + i)^{n} - (1 + j)^{n}}{i - j}] \)</h5>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

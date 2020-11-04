@@ -1,0 +1,160 @@
+{% extends 'base.html'%}
+{% block titleblock%}TVM Portfolio{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Welcome to your Time Value of Money Portfolio!</h3>
+    <div class="container m-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Type of Calculation</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvSimpAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvSimpAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvSimpPV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvSimpPV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvSimpPV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvSimpN_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvSimpN_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvSimpN_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvSimpI_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvSimpI_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvSimpI_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvCompAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvCompAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvCompAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvCompPV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvCompPV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvCompPV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvCompN_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvCompN_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvCompN_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in SingInvCompI_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:SingInvCompI_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:SingInvCompI_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuArrAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuArrAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuArrAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuArrC_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuArrC_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuArrC_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuArrX_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuArrX_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuArrX_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuArrN_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuArrN_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuArrN_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuAdvAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuAdvAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuAdvAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuAdvC_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuAdvC_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuAdvC_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuAdvX_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuAdvX_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuAdvX_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuAdvN_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuAdvN_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuAdvN_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in ConsAnnuPV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:ConsAnnuPV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:ConsAnnuPV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in IncAnnuArrAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:IncAnnuArrAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:IncAnnuArrAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in IncAnnuAdvAV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:IncAnnuAdvAV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:IncAnnuAdvAV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% for item in IncAnnuPV_list %}
+          <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td><a href="{% url 'tvm_app:IncAnnuPV_detail' item.pk %}" class="btn btn-primary m-1">View</a><a href="{% url 'tvm_app:IncAnnuPV_delete' item.pk %}" class="btn btn-danger m-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,94 @@
+{% extends 'base.html'%}
+
+{% block titleblock%}TVM - Calculate{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+
+{% block bodyblock %}
+<div class="jumbotron">
+  <h1>Welcome to the Time Value of Money Calculation Page!</h1>
+  <h2>Select a calculation below to begin</h2>
+</div>
+
+<div class="container text-center" style="margin-top: 20px;margin-bottom: 20px;">
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+  <div class="col-sm d-flex justify-content-center">
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Single Investments with Simple Interest</h5>
+      <div class="card" style="width: 25rem;">
+        <ul class="list-group list-group-flush">
+          <a href="{% url 'tvm_app:create_SingInvSimpAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span></li></a>
+          <a href="{% url 'tvm_app:create_SingInvSimpPV' %}"><li class="list-group-item list-group-item-action">Present Value <span class="maths h5">\( ( PV ) \)</span></li></a>
+          <a href="{% url 'tvm_app:create_SingInvSimpN' %}"><li class="list-group-item list-group-item-action">Period <span class="maths h5">\( ( n ) \)</span></li></a>
+          <a href="{% url 'tvm_app:create_SingInvSimpI' %}"><li class="list-group-item list-group-item-action">Interest rate <span class="maths h5">\( ( i ) \)</span></li></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+<div class="col-sm d-flex justify-content-center">
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Single Investments with Compound Interest</h5>
+    <div class="card" style="width: 25rem;">
+      <ul class="list-group list-group-flush">
+        <a href="{% url 'tvm_app:create_SingInvCompAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span></li></a>
+        <a href="{% url 'tvm_app:create_SingInvCompPV' %}"><li class="list-group-item list-group-item-action">Present Value <span class="maths h5">\( ( PV ) \)</span></li></a>
+        <a href="{% url 'tvm_app:create_SingInvCompN' %}"><li class="list-group-item list-group-item-action">Period <span class="maths h5">\( ( n ) \)</span></li></a>
+        <a href="{% url 'tvm_app:create_SingInvCompI' %}"><li class="list-group-item list-group-item-action">Interest rate <span class="maths h5">\( ( i ) \)</span></li></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+<div class="col-sm d-flex justify-content-center">
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Constant Annuities</h5>
+    <div class="card" style="width: 25rem;">
+      <ul class="list-group list-group-flush">
+        <a href="{% url 'tvm_app:create_ConsAnnuArrAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Arrears</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuArrC' %}"><li class="list-group-item list-group-item-action">Initial Investment <span class="maths h5">\( ( C ) \)</span>: Interest Paid in Arrears</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuArrX' %}"><li class="list-group-item list-group-item-action">Installment <span class="maths h5">\( ( X ) \)</span>: Interest Paid in Arrears</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuArrN' %}"><li class="list-group-item list-group-item-action">Period <span class="maths h5">\( ( n ) \)</span>: Interest Paid in Arrears</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuAdvAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Advance</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuAdvC' %}"><li class="list-group-item list-group-item-action">Initial Investment <span class="maths h5">\( ( C ) \)</span>: Interest Paid in Advance</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuAdvX' %}"><li class="list-group-item list-group-item-action">Installment <span class="maths h5">\( ( X ) \)</span>: Interest Paid in Advance</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuAdvN' %}"><li class="list-group-item list-group-item-action">Period <span class="maths h5">\( ( n ) \)</span>: Interest Paid in Advance</li></a>
+        <a href="{% url 'tvm_app:create_ConsAnnuPV' %}"><li class="list-group-item list-group-item-action">Present Value <span class="maths h5">\( ( PV ) \)</span></li></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+<div class="col-sm d-flex justify-content-center">
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Increasing Annuities</h5>
+    <div class="card" style="width: 25rem;">
+      <ul class="list-group list-group-flush">
+        <a href="{% url 'tvm_app:create_IncAnnuArrAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Arrears</li></a>
+        <a href="{% url 'tvm_app:create_IncAnnuAdvAV' %}"><li class="list-group-item list-group-item-action">Accumulated Value <span class="maths h5">\( ( AV ) \)</span>: Interest Paid in Advance</li></a>
+        <a href="{% url 'tvm_app:create_IncAnnuPV' %}"><li class="list-group-item list-group-item-action">Present Value <span class="maths h5">\( ( PV ) \)</span></li></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}

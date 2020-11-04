@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block titleblock%}Fill in{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Calculate the Nominal Per Period to Continuous Rate</h3>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center m-5">
+      <h4>\( \delta = ln [ (1 + \frac{i^{(p)}}{p})^p ] \)</h4>
+    </div>
+    <p>Where:</p>
+    <ul>
+      <li class="list-unstyled m-2"><span class="maths  h5">\( \delta \)</span> is the Continuous Rate,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( i^{(p)} \)</span> is the Nominal Per Period Rate,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( p \)</span> is the Compounding Period and</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( ln \)</span> is the Natural Logarithm i.e. <span class="maths h5">\( ln(x) = \log_e (x) \)</span></li>
+    </ul>
+
+</div>
+<div class="container">
+<form method="post" class="form m-5">
+  {% csrf_token %}
+    {{ form | crispy}}
+    <input type="submit" value="Calculate" class="btn btn-success">
+    <a class="btn btn-outline-success" href="{% url 'interest_app:calc_interest' %}">Go Back</a>
+</form>
+</div>
+{% endblock %}

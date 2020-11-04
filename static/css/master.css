@@ -1,0 +1,28 @@
+  .form-control{
+    width:30em;
+  }
+
+  form{
+    margin-top: 10px;
+  }
+
+  h1{
+    margin-top: 10px;
+  }
+  .jumbotron{
+    margin-top: 10px;
+  }
+
+.list-group-item{
+  padding: 10px;
+}
+
+  .footer-copyright a{
+  		color: purple;
+  	}
+  	.footer-copyright a:visited{
+  		color: purple;
+  	}
+  	.footer-copyright{
+  		color: purple;
+  	}

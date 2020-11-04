@@ -1,0 +1,73 @@
+  {% extends "base.html" %}
+
+  {% block titleblock%}Interest - Overview{% endblock %}
+  {% block headblock %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {% endblock %}
+
+  {% block bodyblock %}
+    <h1>Interest Rates - Overview</h1>
+    <div class="container border m-2 p-2">
+
+    <div class="container">
+        <h2>Simple Interest</h2>
+        <p>The interest payments do not earn any interest. The interest is calculated on the original capital amount each time.</p>
+        <p>Let <span class="maths">\(i\)</span> be the interest rate and <span class="maths">\(C\)</span> be the initial amount, then the final amount or Accumulated Value
+        (<span class="maths">\(AV\)</span>) will be:</p>
+        <div class="maths text-center" style="margin-top:10px;">
+          <h5>\( AV = C + niC = C(1 + in) \)</h5>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Effective Interest Rates</h2>
+          The amount of interest earned on a single investment at the end of a time period, shown
+          as a fraction of the initial amount is the effective interest rate. Let <span class="maths">\(X\)</span> be the initial
+          investment amount and Y be the amount at the end of the time period. The effective
+          interest rate for the period is:
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( i = \frac{Y - X}{X} \)</h5>
+          </div>
+    </div>
+    <div class="container">
+        <h2>Compounded Interest</h2>
+  The interest payments earn interest. Compound interest is the practice of calculating
+  interest periodically and adding it to the existing principal before each subsequent
+  interest calculation is made. This is called capitalised interest. The final amount or Accumulated Value (<span class="maths">\(AV\)</span>) will be:
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n \)</h5>
+      </div>
+      where <span class="maths">\(n\)</span> is the total number of periods, <span class="maths">\(t\)</span> is the number of years and <span class="maths">\(p\)</span>
+      is the number of periods in one year, i.e. <span class="maths">\(n = tp\)</span>.
+    </div>
+    <div class="container" style="margin-top:10px;">
+      <h2>Notation</h2>
+      In this website, it will be assumed that <span class="maths">\(i\)</span> is the effective interest rate per year and <span class="maths">\(\frac{i^{(p)}}{p}\)</span>
+      is the effective interest rate per period. This is the proportional increase in an initial
+      investment. Usually the nominal interest rate (indicated with <span class="maths">\(i^{(p)}\)</span>) will be quoted as the ruling interest rate and this is quoted implicit per year.
+      This nominal interest rate is then compounded for a number of periods. For example, a nominal interest rate <span class="maths">\(i^{(p)}\)</span> that is
+      compounded <span class="maths">\(p\)</span> times per year, gives an effective interest rate of <span class="maths">\(\frac{i^{(p)}}{p}\)</span>
+      per period for <span class="maths">\(p\)</span> periods.
+    </div>
+    <div class="container" style="margin-top:10px;">
+      <h2>Continuously Compounded Interest</h2>
+      The number of compounding periods <span class="maths">\(p\)</span> in a year becomes large, and the interest rate per period small. We will use to indicate continuous interest:
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\(i^{(\infty)} = e^{\delta}\)</h5>
+      </div>
+    </div>
+    <div class="container" style="margin-top:10px;">
+      <h2>General Conversion Formula</h2>
+      To convert from one type of interest rate to another the follwing formula is used:
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\((1 + i) = (1 + \frac{i^{(p)}}{p})^{p} = e^{\delta}\)</h5>
+      </div>
+      Please also note that interest conversion can also be from one effective period to another effective period:
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\((1 + \frac{i^{(p_{1})}}{p_{1}})^{p_{1}} = (1 + \frac{i^{(p_{2})}}{p_{2}})^{p_{2}}\)</h5>
+      </div>
+      where <span class="maths">\(p_{1}\)</span> and <span class="maths">\(p_{2}\)</span> are different periods.
+    </div>
+
+    </div>
+  {% endblock %}

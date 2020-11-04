@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titleblock %}TVM - Overview{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+  <h1>Time Value of Money - Overview</h1>
+  <div class="container border m-2 p-2">
+
+  <div class="container m-2 p-2">
+      <h2>Key terms:</h2>
+      <p><strong>Initial amount</strong> - The initial investment amount, also called the present value.</p>
+      <p><strong>Payment/Annuity</strong> - When a constant amount of money is paid (or is to be paid) at regular intervals over a period of time, it is called an annuity.</p>
+      <p><strong>Accumulated value</strong> - This is the amount of money that has accumulated by the end of a specific period. It is equivalent to the sum of all regular payments and the initial
+        amount as well as the accumulated interest. Also called the future value.</p>
+      <p><strong>Present value</strong> - This is the current value of the investment.</p>
+      <p><strong>Annuities</strong> - When <span class="maths">\( n \)</span> equal payments are made at regular time intervals over a period of time, it is called an annuity. The payments can be made
+         at the end of each payment period or at the beginning. An ordinary annuity certain is an annuity where the series of regular payments take place at the end of each payment period for a
+         fixed number of periods. An ordinary annuity due is an annuity where the series of regular payments take place at the beginning of each payment period for a fixed number of periods.</p>
+      <p><strong>Interest is paid in arrears</strong> - The interest is accumulated at the end of each period. If an amount is invested at time <span class="maths">\( t\)</span> (beginning of period
+         <span class="maths">\( t + 1\)</span>), the interest is paid at the end of period <span class="maths">\( t + 1 \)</span>.</p>
+      <p><strong>Interest is paid in advance</strong> - The interest is accumulated at the beginning of each period.
+    </div>
+
+    <div class="container m-2 p-2">
+         <h2>Simple Interest Single Investment</h2>
+         <p>Assume that an amount <span class="maths">\(C\)</span> is invested for a specific period at an effective interest rate <span class="maths">\(i\)</span> per year. Then the accumulated value
+         (<span class="maths">\(AV\)</span>) after (<span class="maths">\(n\)</span>) years is given by:</p>
+         <div class="maths text-center" style="margin-top:10px;">
+           <h5>\( AV = C(1 + in) \)</h5>
+         </div>
+         <p>If you are working in a period other than a year, replace <span class="maths">\(i\)</span> with <span class="maths">\(\frac{i^{(p)}}{p}\)</span>
+         In this case <span class="maths">\( n \)</span> refers to the total number of periods ( <span class="maths">\( n = tp \)</span> )</p>
+         <p>Note that <span class="maths">\(PV = C(1 + in)^{-1}\)</span> is the Present Value of the Investment and <span class="maths">\(AV = C(1 + in) \)</span> is the Future Value of
+           the investment.</p>
+
+      <h2>Compound Interest Single Investment</h2>
+      <p>Assume that an amount <span class="maths">\(C\)</span> is invested for a specific period at an effective interest rate <span class="maths">\(i\)</span> per year. Then the accumulated value
+      (<span class="maths">\(AV\)</span>) after (<span class="maths">\(n\)</span>) years is given by:</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = C(1 + i)^n \)</h5>
+      </div>
+      <p>If you are working in a period other than a year, replace <span class="maths">\(i\)</span> with <span class="maths">\(\frac{i^{(p)}}{p}\)</span> </p>
+      <p>Note that <span class="maths">\(PV = C(1 + i)^{-n}\)</span> is the Present Value of the Investment and <span class="maths">\(AV = C(1 + i)^n\)</span> is the Future Value of the investment.</p>
+    </div>
+
+    <div class="container m-2 p-2">
+      <h2>Annuities</h2>
+      <h3>Payment made at the end of a period with a constant amount</h3>
+      <p>Assume an amount <span class="maths">\( X \)</span> is invested at the end of each year for <span class="maths">\( n \)</span> years. (The first investment is made at the end of year 1
+      and the last investment is made at the end of year <span class="maths">\( n \)</span>, thus a total of <span class="maths">\( n \)</span> investments). Assume interest is paid
+      in arrears and the effective interest rate is <span class="maths">\( i \)</span> per year. The accumulated value of the investment at the end of <span class="maths">\( n \)</span> years
+      is given by:</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( AV = X[\frac{(1 + i)^n -1}{i}] \)</h5>
+      </div>
+      <p>If you are working in a period other than a year, replace <span class="maths">\(i\)</span> with <span class="maths">\(\frac{i^{(p)}}{p}\)</span>.
+        In this case <span class="maths">\( n \)</span> refers to the total number of periods ( <span class="maths">\( n = tp \)</span> ).</p>
+      <p>Note that the present value of the above-mentioned investment is given by:</p>
+      <div class="maths text-center" style="margin-top:10px;">
+        <h5>\( PV = AV(1 + i)^{-n} = X[\frac{1 - (1 + i)^{-n}}{i}] \)</h5>
+      </div>
+      <h3>Payment made at the start of a period with a constant amount</h3>
+      <p>Assume an amount <span class="maths">\( X \)</span> is invested at the beginning of the each year for <span class="maths">\( n \)</span>
+        years. (The first investment is invested at the beginning of year 1 and the last investment at the beginning of year <span class="maths">\( n \)</span>, therefore a total of
+        <span class="maths">\( n \)</span> investments). Assume interest is paid in arrears and the effective interest rate is <span class="maths">\( i \)</span> per year. The
+        accumulated value of the investment at the end of <span class="maths">\( n \)</span> years is given by:</p>
+        <div class="maths text-center" style="margin-top:10px;">
+          <h5>\( AV = X(1 + i)[\frac{(1 + i)^n -1}{i}] \)</h5>
+        </div>
+        <p>If you are working in a period other than a year, replace <span class="maths">\(i\)</span> with <span class="maths">\(\frac{i^{(p)}}{p}\)</span>.
+          In this case <span class="maths">\( n \)</span> refers to the total number of periods ( <span class="maths">\( n = tp \)</span> ).</p>
+          <p>Note that the present value of the above-mentioned investment is given by:</p>
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( PV = AV(1 + i)^{-n} = X(1 + i)[\frac{1 - (1 + i)^{-n}}{i}] \)</h5>
+          </div>
+
+          <h3>Annuities with Increasing Installment</h3>
+          <p>The formula for the AV of Increasing Annuities In Arrears and In Advance are given below respectively:</p>
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( AV = C(1 + i)^n  + X[\frac{(1 + i)^{n} - (1 + j)^{n}}{i - j}] \)</h5>
+          </div>
+          <p>Note the above mentioned formula includes an Initial Amount that was invested</p>
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( AV = C(1 + i)^n  + X(1 + i)[\frac{(1 + i)^{n} - (1 + j)^{n}}{i - j}] \)</h5>
+          </div>
+          <p>For both formulae the <span class="maths">\( j \)</span> is the percentage increase in each period</p>
+          <h5>Please note if an Initial Amount was invested with an Annuity add the following to the exisiting formulas:</h5>
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( C(1 + i)^n \)</h5>
+          </div>
+          <p>So for an example if an Initial Amount was invested with a Constant Annuity which made Payments at the start of a Period and Interest was paid in advance then the formula will be:</p>
+          <div class="maths text-center" style="margin-top:10px;">
+            <h5>\( C(1 + i)^n + X(1 + i)[\frac{(1 + i)^n -1}{i}] \)</h5>
+          </div>
+    </div>
+
+  </div>
+{% endblock %}

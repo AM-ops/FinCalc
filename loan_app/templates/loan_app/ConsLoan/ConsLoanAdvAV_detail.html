@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+{% block titleblock%}Answer{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js" crossorigin="anonymous"></script>
+{{ script | safe }}
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Answer for {{detail.type}}</h3>
+    <p>Initial Amount  : {{ detail.c }}</p>
+    <p>Payment/Withdrawal Amount  : {{ detail.x }}</p>
+    <p>Annual Interest Rate : {{ detail.i }} (%)</p>
+    <p>Number of years : {{ detail.n }}</p>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center">
+      <h5>\( AV = C(1 + i)^n  - X(1 +i)[\frac{(1 + i)^{n} -1 }{i}] \)</h5>
+    </div>
+    <div class="maths text-center m-3">
+      <h5>\( AV = {{detail.c}}(1 + {{detail.idiv}})^{({{detail.n}})}  - {{detail.x}}(1+ {{detail.idiv}})[\frac{(1 + {{detail.idiv}})^{({{detail.n}})} -1 }{({{detail.idiv}})}] \)</h5>
+    </div>
+    <h5 style="color:green;font-weight:bold;">Answer is: {{ detail.answer }}</h5>
+
+      <h2>Graph</h2>
+      <div class="container m-2 p-2 d-flex justify-content-center">
+        {{ div | safe }}
+      </div>
+
+      <h2>Amorization Table/Schedule</h2>
+      <div class="container m-2 p-2 d-flex justify-content-center">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Period</th>
+              <th scope="col">Accumulated Value</th>
+              <th scope="col">Rent/Interest component</th>
+              <th scope="col">Capital component</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for m,av,sr,sk in items %}
+            <tr>
+              <td>{{m}}</td>
+              <td>{{av}}</td>
+              <td>{{sr}}</td>
+              <td>{{sk}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container p-4">
+        <div class="pagination justify-content-center">
+        {% if items.has_other_pages %}
+        <ul class="pagination">
+          {% if items.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ items.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+          {% endif %}
+    {% for i in items.paginator.page_range %}
+      {% if items.number == i %}
+        <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if items.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ items.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+      {% endif %}
+      </ul>
+    {% endif %}
+      </div>
+    </div>
+
+
+    <div class="container text-center" style='margin-top:10px;'>
+      <a class="btn btn-outline-success" href="{% url 'loan_app:calc_loan' %}">Go Back</a>
+      <a class="btn btn-outline-success" href="{% url 'loan_app:loan_list' %}">To Portfolio</a>
+    </div>
+</div>
+{% endblock%}

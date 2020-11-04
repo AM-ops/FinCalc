@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block titleblock%}Answer{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js" crossorigin="anonymous"></script>
+{{ script | safe }}
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Answer for {{detail.type}}</h3>
+    <p>Accumulated Value  : {{ detail.av }}</p>
+    <p>Initial Amount  : {{ detail.c }}</p>
+    <p>Annual Interest Rate : {{ detail.i }} (%)</p>
+    <p>Installment Amount : {{ detail.x }}</p>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center">
+      <h4>\( n = \frac{log[\frac{AV + X/i}{C + X/i}]}{log(1 + i)} \)</h4>
+    </div>
+    <div class="maths text-center m-3">
+      <h4>\( n = \frac{log[\frac{({{detail.av}}) + ({{detail.x}})/({{detail.idiv}})]}{({{detail.c}}) + ({{detail.x}})/({{detail.idiv}})}}{log(1 + {{detail.idiv}})} \)</h4>
+    </div>
+    <h5 style="color:green;font-weight:bold;">Answer is: {{ detail.answer }} years</h5>
+
+      <h2>Graph</h2>
+      <div class="container m-2 p-2 d-flex justify-content-center">
+        {{ div | safe }}
+      </div>
+
+
+    <div class="container text-center" style='margin-top:10px;'>
+      <a class="btn btn-outline-success" href="{% url 'tvm_app:calc_tvm' %}">Go Back</a>
+      <a class="btn btn-outline-success" href="{% url 'tvm_app:tvm_list' %}">To Portfolio</a>
+    </div>
+</div>
+{% endblock%}

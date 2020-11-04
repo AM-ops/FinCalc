@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block titleblock%}Fill in{% endblock %}
+{% block headblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}
+{% block bodyblock %}
+<div class="container m-5">
+    <h3>Calculate the Nominal Per Period to Annual Effective Rate</h3>
+    <h4>Formula is given by:</h4>
+    <div class="maths text-center m-5">
+      <h5>\( i = (1 + \frac{i^{(p)}}{p})^p - 1 \)</h5>
+    </div>
+    <p>Where:</p>
+    <ul>
+      <li class="list-unstyled m-2"><span class="maths h5">\( i \)</span> is the Annual Effective Rate,</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( i^{(p)} \)</span> is the Nominal Per Period Rate and</li>
+      <li class="list-unstyled m-2"><span class="maths h5">\( p \)</span> is the Compounding Period</li>
+    </ul>
+</div>
+<div class="container">
+<form method="post" class="form m-5">
+  {% csrf_token %}
+    {{ form | crispy}}
+    <input type="submit" value="Calculate" class="btn btn-success">
+    <a class="btn btn-outline-success" href="{% url 'interest_app:calc_interest' %}">Go Back</a>
+</form>
+</div>
+{% endblock %}
